@@ -4,7 +4,11 @@ import java.util.Scanner;
 public class Kmeans {
 
     dataPoint[] data;
-    int k = 2;									// number of clusters
+    int k = 2;
+    int sumx = 0;
+    int sumy = 0;// number of clusters
+    float averagex = 0;
+    float averagey = 0;
     dataPoint[] cluster;			// the means for each cluster
 
     // initialize all the data points 
@@ -79,8 +83,14 @@ public class Kmeans {
         for (int d = 0; d < data.length; d++) {
             // check if this data point is in cluster m
             if (data[d].type == m) {
-                System.out.println("   Found data point in this cluster at x= " + data[d].x + " and y= " + data[d].y);
+                sumx += data[d].x;
+                sumy += data[d].y;
+                averagex = sumx / data.length;
+                averagey = sumy / data.length;
+                //System.out.println("   Found data point in this cluster at x= " + data[d].x + " and y= " + data[d].y);
             }
+                    //cluster[m].x = averagex;
+                    //cluster[m].y = averagey;
         }
     }
     // check for empty cluster with no nodes nearby
